@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"io"
+	"net/http"
 	"time"
 )
 
@@ -23,9 +24,10 @@ type CreateKYCDTO struct {
 	Age  uint8
 }
 
-func DecodeCreateKYCDTO(in io.Reader) (CreateKYCDTO, error) {
+func DecodeRequest(req *http.Request) (CreateKYCDTO, error) {
+	defer req.Body.Close()
 	var out CreateKYCDTO
-	err := json.NewDecoder(in).Decode(&out)
+	err := json.NewDecoder(req.Body).Decode(&out)
 	return out, err
 }
 
@@ -40,6 +42,11 @@ func DecodeCreateKYCResponse(in io.Reader) (CreateKYCResponse, error) {
 	return out, err
 }
 
-func EncodeOutgoingKYCDTO(res CreateKYCResponse, out io.Writer) error {
-	return json.NewEncoder(out).Encode(res)
+func EncodeResponse(out http.ResponseWriter, res CreateKYCResponse, err error) {
+	if err != nil {
+		http.Error(out, "I can do some interesting error handling if i like", http.StatusTeapot)
+		return
+	}
+	json.NewEncoder(out).Encode(res)
+	out.WriteHeader(http.StatusAccepted)
 }

@@ -12,8 +12,8 @@ import (
 func main() {
 	createKYCHandler := goodhandlers.New(
 		kyc.CreateKYC,
-		kyc.DecodeCreateKYCDTO,
-		kyc.EncodeOutgoingKYCDTO,
+		kyc.DecodeRequest,
+		kyc.EncodeResponse,
 	)
 
 	router := mux.NewRouter()

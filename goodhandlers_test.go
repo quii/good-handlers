@@ -13,8 +13,8 @@ import (
 func TestGoodHandlers(t *testing.T) {
 	handler := goodhandlers.New(
 		kyc.CreateKYC,
-		kyc.DecodeCreateKYCDTO,
-		kyc.EncodeOutgoingKYCDTO,
+		kyc.DecodeRequest,
+		kyc.EncodeResponse,
 	)
 	server := httptest.NewServer(handler)
 	defer server.Close()
