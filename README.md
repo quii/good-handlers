@@ -37,3 +37,7 @@ To create a "good handler" you need to supply a `Service` which takes in an `A` 
 In my book, that is a good definition of a service function/method. In addition, you need to supply a `Decoder[A]` so that we can parse the incoming request into an `A` and an `Encoder[B]`, to turn the result from the service call into a HTTP response.
 
 Clearly this won't work for every use-case, but I intend to keep trying out different scenarios and see what I come up with. 
+
+## What about everything else?
+
+Logging? Metrics? Blah blah, it's all handled already by everyone else. Mostly these x-cutting concerns should be handled by middleware, and because good-handlers just implements `http.Handler` you can compose your middleware like normal.
