@@ -1,6 +1,6 @@
 # good handlers
 
-An experiment in having good (HTTP) handlers.
+An experiment in having good (HTTP) handlers. Not finished, please be chill, I just hope it's interesting.
 
 ## Waffle
 
@@ -26,9 +26,9 @@ Web frameworks, are nasty and we all hate them, but can I offer something that i
 
 "good handlers"
 
-Dive in to the test and the `cmd/example/main.go`
+A function that enforces this simple design constraint in a type-safe but flexible manner (thanks generics!), and returns you a `http.Handler` to use as normal.
 
-You'll notice it doesn't offer much, it stays like the stdlib, but it does force some separation of concerns in a typesafe manner (thanks generics!)
+Dive in to the test `goodhandlers_test.go` and `cmd/example/main.go`
 
 ### What is a service?
 
