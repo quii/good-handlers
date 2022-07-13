@@ -1,12 +1,13 @@
 package kyc
 
 import (
+	"context"
 	"encoding/json"
 	"io"
 	"time"
 )
 
-func CreateKYC(kycdto CreateKYCDTO) (CreateKYCResponse, error) {
+func CreateKYC(ctx context.Context, kycdto CreateKYCDTO) (CreateKYCResponse, error) {
 	// this is where your amazing business logic goes, it doesn't care about HTTP,
 	// its just got some lump of data and it needs to return something back
 

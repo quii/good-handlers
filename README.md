@@ -30,6 +30,10 @@ Dive in to the test and the `cmd/example/main.go`
 
 You'll notice it doesn't offer much, it stays like the stdlib, but it does force some separation of concerns in a typesafe manner (thanks generics!)
 
-To create a "good handler" you need to supply a `Service` which takes in an `A` and returns a `B, error`. In my book, that is a good definition of a service function/method. In addition, you need to supply a `Decoder[A]` so that we can parse the incoming request into an `A` and an `Encoder[B]`, to turn the result from the service call into a HTTP response.
+### What is a service?
+
+To create a "good handler" you need to supply a `Service` which takes in an `A` (and a `context.Context`) and returns a `B, error`. 
+
+In my book, that is a good definition of a service function/method. In addition, you need to supply a `Decoder[A]` so that we can parse the incoming request into an `A` and an `Encoder[B]`, to turn the result from the service call into a HTTP response.
 
 Clearly this won't work for every use-case, but I intend to keep trying out different scenarios and see what I come up with. 
