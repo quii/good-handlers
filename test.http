@@ -1,0 +1,4 @@
+### make a kyc
+POST http://localhost:8080/kyc
+
+{"Name":"Chris James", "Age": 38}
